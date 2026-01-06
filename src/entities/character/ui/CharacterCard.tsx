@@ -1,8 +1,8 @@
-import type { Character } from "@/types/character";
-import { Card, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Card, CardTitle, CardContent } from "@/shared/ui/card";
+import { Button } from "@/shared/ui/button";
 import { Star } from "lucide-react";
+import type { Character } from "../model/types";
+import { cn } from "@/shared/lib/utils";
 
 interface Props {
   character: Character;
@@ -10,11 +10,7 @@ interface Props {
   onToggleFavorite: (c: Character) => void;
 }
 
-export const CharacterCard = ({
-  character,
-  favorite,
-  onToggleFavorite,
-}: Props) => {
+export const CharacterCard = ({ character, favorite, onToggleFavorite }: Props) => {
   return (
     <Card
       className={cn(
@@ -32,15 +28,11 @@ export const CharacterCard = ({
         <Button
           variant="secondary"
           size="icon"
-          className={cn(
-            "absolute top-2 right-2 rounded-full shadow bg-white/80 hover:bg-white",
-          )}
+          className={cn("absolute top-2 right-2 rounded-full shadow bg-white/80 hover:bg-white")}
           onClick={() => onToggleFavorite(character)}
           title={favorite ? "Remove from favorites" : "Add to favorites"}
         >
-          <Star
-            className={cn("h-5 w-5", favorite && "fill-red-500 text-red-500")}
-          />
+          <Star className={cn("h-5 w-5", favorite && "fill-red-500 text-red-500")} />
         </Button>
       </div>
 

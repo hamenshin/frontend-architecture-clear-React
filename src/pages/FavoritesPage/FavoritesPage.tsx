@@ -1,8 +1,10 @@
-import { useFavorites } from "@/hooks/useFavorites";
-import { CharacterList } from "@/components/CharacterList";
+import { CharacterList } from "@/entities/character/ui/CharacterList";
+import { setupDeps } from "./useDi";
+
+const { useFavoriteStore } = setupDeps();
 
 export function FavoritesPage() {
-  const { list, isFavorite, toggleFavorite, clearFavorites } = useFavorites();
+  const { list, isFavorite, toggleFavorite, clearFavorites } = useFavoriteStore();
 
   return (
     <div className="p-4">
@@ -18,11 +20,7 @@ export function FavoritesPage() {
           </button>
         )}
       </div>
-      <CharacterList
-        items={list}
-        isFavorite={isFavorite}
-        onToggleFavorite={toggleFavorite}
-      />
+      <CharacterList items={list} isFavorite={isFavorite} onToggleFavorite={toggleFavorite} />
     </div>
   );
 }

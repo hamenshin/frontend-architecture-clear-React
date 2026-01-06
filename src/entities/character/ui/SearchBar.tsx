@@ -1,5 +1,6 @@
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
+
 
 interface Props {
   value: string;
